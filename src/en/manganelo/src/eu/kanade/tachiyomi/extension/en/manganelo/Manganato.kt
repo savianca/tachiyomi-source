@@ -7,6 +7,8 @@ import eu.kanade.tachiyomi.source.model.SManga
 import okhttp3.Request
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class Manganato :
     MangaBox(
@@ -35,7 +37,11 @@ class Manganato :
             name = it.text()
         }
         date_upload = element.selectFirst("span.chapter-time")?.text()?.let {
-            super.parseChapterDate(it) // Added 'super.' here
+            try {
+                SimpleDateFormat("MMM dd,yy", Locale.ENGLISH).parse(it)?.time
+            } catch (e: Exception) {
+                0L
+            }
         } ?: 0L
     }
 
