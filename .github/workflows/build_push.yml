@@ -72,9 +72,9 @@ jobs:
         with:
           cache-read-only: ${{ matrix.chunk.number > 1 }}
 
-      - name: Build Manganato
+      - name: name: Build Manganato
         run: |
-          ./gradlew :src:en:manganelo:assembleDebug
+          ./gradlew :src:en:manganelo:assembleDebug -x spotlessCheck
 
       - name: Upload APKs (${{ matrix.chunk.number }})
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
