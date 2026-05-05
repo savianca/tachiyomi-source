@@ -72,7 +72,7 @@ jobs:
         with:
           cache-read-only: ${{ matrix.chunk.number > 1 }}
 
-      - name: name: Build Manganato
+      - name: Build Manganato
         run: |
           ./gradlew :src:en:manganelo:assembleDebug -x spotlessCheck
 
